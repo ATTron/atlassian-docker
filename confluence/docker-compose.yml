@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  confluence:
+    image: atlassian/confluence-server
+    container_name: confluence
+    hostname: confluence
+    ports:
+      - 8090:8090
+    volumes:
+      - /opt/data/confluence:/var/atlassian/application-data/confluence
+    networks:
+      - atlassianNet
+
+networks:
+  atlassianNet:
+    external: true
+    

@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:9.5
+    container_name: postgres
+    hostname: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - /opt/data/postgres:/var/lib/postgresql/data
+      - init.sql:/docker-entrypoint-initdb.d/
+    networks:
+      - atlassianNet
+
+networks:
+  atlassianNet:
+    external: true
+    

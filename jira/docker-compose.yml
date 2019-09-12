@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  jira:
+    image: atlassian/jira-core
+    container_name: jira
+    hostname: jira
+    ports:
+      - 8080:8080
+      - 8443:8443
+    volumes:
+      - /opt/data/jira:/var/atlassian/application-data/jira
+    networks:
+      - atlassianNet
+
+networks:
+  atlassianNet:
+    external: true
+    
