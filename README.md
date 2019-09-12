@@ -30,6 +30,9 @@ run-all                        Run all containers
 
 ```
 
+BUILD THE DEPENDENCIES FIRST  
+``` make deps ```
+
 IT IS REQUIRED TO HAVE POSTGRES RUNNING IN ORDER FOR CONFLUENCE + JIRA TO FUNCTION AS EXPECTED  
 ``` make postgres ```  
 

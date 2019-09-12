@@ -10,7 +10,7 @@ LINE   = $(PURPLE)--------------------------------------------------------------
 ###############################################################################
 ## BUILD Applications
 ###############################################################################
-deps: # build dependancies
+deps: # build dependencies
 	docker network create atlassianNet
 
 build-postgres: ## Build postgres docker image
