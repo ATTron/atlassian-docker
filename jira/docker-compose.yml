@@ -2,14 +2,15 @@ version: '3'
 
 services:
   jira:
-    image: atlassian/jira-core
+    image: atlassian/jira-software:latest
     container_name: jira
     hostname: jira
     ports:
       - 8080:8080
       - 8443:8443
     volumes:
-      - /opt/data/jira:/var/atlassian/application-data/jira
+      - /opt/atlassian/data/jira:/var/atlassian/application-data/jira
+      - ./server.xml:/opt/atlassian/etc/server.xml.j2
     networks:
       - atlassianNet
 

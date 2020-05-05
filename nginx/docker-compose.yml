@@ -1,0 +1,16 @@
+version: '3'
+services:
+  proxy:
+    container_name: nginx
+    hostname: nginx
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./config:/etc/nginx
+    networks:
+      - atlassianNet
+
+networks:
+  atlassianNet:
+    external: true
