@@ -31,16 +31,16 @@ deps: # build dependencies
 ## RUN SECTION
 ###############################################################################
 postgres: ## Run the postgres image
-	cd postgres && docker-compose up &
+	cd postgres && docker-compose up -d
 
 jira: ## Run the jira image
-	cd jira && docker-compose up &
+	cd jira && docker-compose up -d
 
 confluence: ## Run the confluence image
-	cd confluence && docker-compose up &
+	cd confluence && docker-compose up -d
 
 nginx: ## Run the nginx proxy
-	cd nginx && docker-compose up &
+	cd nginx && docker-compose up -d
 
 run-all: nginx postgres jira confluence ## Run all containers
 
@@ -64,15 +64,10 @@ down-all: down-postgres down-jira down-confluence down-nginx ## Bring down postg
 
 help: ## That's me!
 	@echo
-	@echo "#$(LINE)"
-	@printf "\033[37m%-30s\033[0m %s\n" "# Makefile Help                                                                                  |"
-	@echo "#$(LINE)"
-	@printf "\033[37m%-30s\033[0m %s\n" "# This Makefile can be used to run, build, and tear down the atlassian suite (Confluence & Jira) |"
-	@echo "#$(LINE)"
-	@echo 
-	@printf "\033[37m%-30s\033[0m %s\n" "#-target-----------------------description--------------------------------------------------------"
-	@grep -E '^[a-zA-Z_-].+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
-	@echo 
+	@printf "\033[37m%-30s\033[0m %s\n" "#----------------------------------------------------------------------------------------"
+	@printf "\033[37m%-30s\033[0m %s\n" "# Makefile Help                                                                         |"
+	@printf "\033[37m%-30s\033[0m %s\n" "#-target-----------------------description-----------------------------------------------"
+	@grep -h -E '^[a-zA-Z_-].+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 print-%  : ; @echo $* = $($*)
 
